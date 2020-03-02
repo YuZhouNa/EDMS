@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dyz.dao.UserMapper">
+    <select id="queryUserByUsername" resultType="users">
+        select * from edms.users
+        where username = #{username} and isadmin = #{isadmin}
+    </select>
+
+    <select id="queryUserByName" resultType="users">
+        select * from edms.users
+        where name = #{name}
+    </select>
+
+    <select id="queryUserNameByName" resultType="String">
+        select username from edms.users
+        where  name = #{name}
+    </select>
+
+    <update id="updatePasswordByUsername">
+        update edms.users
+        set password = #{password}
+        where username = #{username}
+    </update>
+
+    <select id="queryUserByIsadmin" resultType="users">
+        select * from edms.users
+        where isadmin = #{isadmin}
+    </select>
+
+    <select id="userCountByIsadmin" resultType="int">
+        select count(*) from edms.users
+        where isadmin = #{isadmin}
+    </select>
+
+    <delete id="deleteUserByUsername" parameterType="String">
+        delete from edms.users
+        where username = #{username}
+    </delete>
+
+    <update id="updateIsadminByUsername">
+        update edms.users
+        set isadmin = #{isadmin}
+        where username = #{username}
+    </update>
+
+    <insert id="addUser" parameterType="users">
+        insert into edms.users(username, password, name, isadmin)
+        values (#{username},#{password},#{name},#{isadmin})
+    </insert>
+
+    <update id="updateNameByUsername">
+        update edms.users
+        set name = #{name}
+        where username = #{username}
+    </update>
+</mapper>

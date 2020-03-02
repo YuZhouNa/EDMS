@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dyz.dao.FileMapper">
+    <select id="queryAllFile" resultType="files">
+        select * from edms.files
+    </select>
+
+    <select id="fileCount" resultType="int">
+        select count(*) from edms.files
+    </select>
+
+    <select id="queryAllFiletype" resultType="filetype">
+        select * from edms.filetype
+    </select>
+
+    <insert id="addfile" parameterType="files">
+	insert into edms.files(filename,filetype,filesize,filedescribe,filelocation,uploadtime,uploaduser,downloadtimes)
+	values(#{filename},#{filetype},#{filesize},#{filedescribe},#{filelocation},#{uploadtime},#{uploaduser},0)
+    </insert>
+
+    <select id="queryFileByFileid" resultType="files">
+        select * from edms.files
+        where fileid = #{fileid}
+    </select>
+
+    <update id="updateDownloadtimesByFileid" parameterType="int">
+	    update edms.files set downloadtimes = downloadtimes + 1
+	    where fileid = #{fileid}
+    </update>
+
+    <delete id="deleteFileByFileid" parameterType="int">
+        delete from edms.files
+        where fileid = #{fileid}
+    </delete>
+
+    <select id="queryFileByFiletype" resultType="files">
+        select * from edms.files
+        where filetype = #{filetype}
+    </select>
+
+    <select id="fileCountByFiletype" resultType="int">
+        select count(*) from edms.files
+        where filetype = #{filetype}
+    </select>
+
+    <select id="queryFiletypeByTypeid" resultType="String">
+        select filetype from edms.filetype
+        where typeid = #{typeid}
+    </select>
+
+    <select id="queryFileByUploaduser" resultType="files">
+        select * from edms.files
+        where uploaduser = #{uploaduser}
+    </select>
+
+    <select id="fileCountByUploaduser" resultType="int">
+        select count(*) from edms.files
+        where uploaduser = #{uploaduser}
+    </select>
+
+    <delete id="deleteFiletypeByTypeid" parameterType="int">
+        delete from edms.filetype
+        where typeid = #{typeid}
+    </delete>
+
+    <select id="queryFilelocationByFiletype" resultType="String">
+        select filelocation from edms.files
+        where filetype =#{filetype}
+    </select>
+
+    <update id="updateFiletypeByTypeid" parameterType="filetype">
+        update edms.filetype
+        set filetype = #{filetype}
+        where typeid = #{typeid}
+    </update>
+
+    <insert id="addFiletype" parameterType="String">
+        insert into edms.filetype(filetype) values (#{filetype})
+    </insert>
+</mapper>
