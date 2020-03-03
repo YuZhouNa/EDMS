@@ -34,6 +34,7 @@ public class UserController {
     @Qualifier("fileServiceImpl")
     private FileService fileService;
 
+    //首页
     @RequestMapping("/toIndex")
     public String toIndex (Model model) {
         List<filetype> list = fileService.queryAllFiletype();
@@ -42,6 +43,7 @@ public class UserController {
     }
 
 
+    //登录
     @RequestMapping("/checkUser")
     @ResponseBody
     public String checkUser (HttpSession session,@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("isadmin") String isadmin){
@@ -60,12 +62,12 @@ public class UserController {
         }
     }
 
+    //注册
     @RequestMapping("/register")
     @ResponseBody
     public String register (@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("name") String name){
 
         String repeat = userService.checkUserRepeat(username,name);
-        System.out.println(repeat);
         if(repeat.equals("USERNAME_EXIST")){
             return "USERNAME_EXIST";
         }else if(repeat.equals("NAME_EXIST")){
@@ -89,7 +91,6 @@ public class UserController {
     }
 
 
-
     @RequestMapping("/toUpdatePassword")
     public String toUpdatePassword () {
         return "updatepassword";
@@ -111,6 +112,7 @@ public class UserController {
     }
 
 
+    //更改密码
     @RequestMapping("/updatePassword")
     @ResponseBody
     public String updatePassword (HttpSession session,@RequestParam("username") String username, @RequestParam("password1") String password1,@RequestParam("password2") String password2, @RequestParam("isadmin") String isadmin) {
@@ -131,6 +133,8 @@ public class UserController {
         return res;
     }
 
+
+    //更改昵称
     @RequestMapping("/updateName")
     @ResponseBody
     public String updateName (HttpSession session,@RequestParam("name") String name,@RequestParam("username") String username, @RequestParam("isadmin") String isadmin) {
@@ -156,7 +160,9 @@ public class UserController {
         }
     }
 
-        @RequestMapping("/queryAllUser/{isadmin}")
+
+    //根据不同权限查询所有用户
+    @RequestMapping("/queryAllUser/{isadmin}")
     @ResponseBody
     public Map<String, Object> queryAllUser(@PathVariable("isadmin") int isadmin) {
         List<users> users = userService.queryUserByIsadmin(isadmin);
@@ -173,6 +179,8 @@ public class UserController {
         return map;
     }
 
+
+    //删除用户
     @RequestMapping("/deleteUser")
     @ResponseBody
     public String deleteUser(String username) {
@@ -190,6 +198,8 @@ public class UserController {
         return res;
     }
 
+
+    //更改权限
     @RequestMapping("/updateUserIsadmin")
     @ResponseBody
     public String updateUserIsadmin(String username,int isadmin) {

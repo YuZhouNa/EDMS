@@ -89,11 +89,6 @@ public class FileController {
     }
 
 
-
-
-
-
-
     //查询全部文档
     @RequestMapping("/queryAllFile")
     @ResponseBody

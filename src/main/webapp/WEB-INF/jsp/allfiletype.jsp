@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>allfiletype</title>
+    <title>文档类型</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/statics/layui/css/layui.css">
 </head>
 <body>
