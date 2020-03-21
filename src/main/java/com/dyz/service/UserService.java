@@ -9,6 +9,7 @@ public interface UserService {
     //登录判定
     String checkUser(String username, String password, int isadmin);
 
+    //通过yusername查询User
     users queryUserByUsername(String username, int isadmin);
 
     //通过name查询username

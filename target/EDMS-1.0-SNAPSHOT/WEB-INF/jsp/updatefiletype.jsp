@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>updatefiletype</title>
+    <title>更改文档类型</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -59,16 +59,6 @@
                 success:function (data) {
                     if(data === "SUCCESS"){
                         layer.close(loading);
-
-                        // layer.msg("修改成功", {icon: 6}, function () {
-                        //     // 获得frame索引
-                        //     var index = parent.layer.getFrameIndex(window.name);
-                        //     //关闭当前frame
-                        //     parent.layer.close(index);
-                        //     //修改成功后刷新父界面
-                        //     window.parent.location.reload();
-                        // });
-
                         layer.open({
                             title: '信息'
                             ,content: '修改成功'

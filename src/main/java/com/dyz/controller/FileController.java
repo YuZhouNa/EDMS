@@ -184,7 +184,7 @@ public class FileController {
 
     }
 
-    //    文件下载
+    //文件下载
     @RequestMapping(value = "/download/{filename}/{uploaduser}/{fileid}")
     public String download(@PathVariable String filename, @PathVariable String uploaduser, @PathVariable int fileid,
                            HttpServletRequest request, HttpServletResponse response) throws IOException {

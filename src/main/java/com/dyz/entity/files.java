@@ -22,6 +22,4 @@ public class files {
     private Date uploadtime;        //上传时间
     private String uploaduser;      //上传人
     private int downloadtimes;      //下载次数
-
-
 }

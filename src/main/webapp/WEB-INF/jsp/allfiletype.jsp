@@ -67,9 +67,6 @@
                         shadeClose:true,
                         content:'${pageContext.request.contextPath}/file/toAddfiletype'
                     });
-
-
-
                     break;
             };
         });
